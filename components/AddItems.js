@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Formik } from 'formik';
+//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ItemsMainView from './ItemsMainView'
 
-const Tab = createBottomTabNavigator();
+//const Tab = createBottomTabNavigator();
 
 export default class AddItems extends Component {
     constructor(props)
@@ -37,13 +38,7 @@ export default class AddItems extends Component {
         return (
             <NavigationContainer>
                 <View>
-                { props => <ItemsMainView
-                          {...props}
-                          title={ this.state.title }
-                          onTitleChange={ this.onTitleChange }
-                          onSaveTitle={ this.onSaveTitle }
-                          isTitleSaved={ this.state.isTitleSaved }
-                        />}
+                
                 </View>
             </NavigationContainer>
         )
