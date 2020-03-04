@@ -2,7 +2,6 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-//import AddItems from './components/AddItems';
 import ItemsMain from './components/ItemsMain'
 
 //const Stack = createStackNavigator();
