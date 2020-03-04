@@ -19,7 +19,8 @@ export default function ItemsMain() {
                   sellerInfoName: '',
                   sellerInfoPhone: ''
               }}
-              onSubmit={(values) => {
+              onSubmit={(values, actions) => {
+                actions.resetForm();
                 console.log(values);
               }}
             >

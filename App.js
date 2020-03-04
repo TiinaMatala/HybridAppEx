@@ -8,9 +8,21 @@ import ItemsMain from './components/ItemsMain'
 //const Stack = createStackNavigator();
 
 export default function App() {
+
+  const items = [
+    {title: 'Rubber boots',
+    description: 'Yellow, size 36',
+    category: 'shoes and clothes',
+    location: 'Oulu',
+    askingPrice: '5',
+    deliveryTypeShipping: false,
+    deliveryTypePickup: true,
+    sellerInfoName: 'Nina',
+    sellerInfoPhone: '0401234567'}
+  ]
   return (
     <View style={styles.container}>
-      <Text style={ styles.introduction}>Please type in the information of the sold item</Text>
+      <Text style={ styles.introduction}>Please type in the information of the item on sale</Text>
       <ItemsMain />
     </View>
   );
