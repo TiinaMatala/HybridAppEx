@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 //import AddItems from './components/AddItems';
 import ItemsMain from './components/ItemsMain'
@@ -21,10 +21,12 @@ export default function App() {
     sellerInfoPhone: '0401234567'}
   ]
   return (
-    <View style={styles.container}>
-      <Text style={ styles.introduction}>Please type in the information of the item on sale</Text>
-      <ItemsMain />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <Text style={ styles.introduction}>Please type in the information of the item on sale</Text>
+        <ItemsMain />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

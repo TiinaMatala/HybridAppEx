@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, ScrollView, View, Button, StyleSheet, TextInput, Keyboard } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput, Keyboard } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Formik } from 'formik';
 
@@ -25,7 +25,7 @@ export default function ItemsMain() {
               }}
             >
               {(props) => (
-                 <ScrollView>
+                 <View>
                     <TextInput 
                        style={styles.input}
                        placeholder='Item title'
@@ -95,7 +95,7 @@ export default function ItemsMain() {
 
                     <Button title='submit' color='#483D8B' onPress={props.handleSubmit} />
 
-                 </ScrollView>   
+                 </View>   
               )}
             </Formik>
         </View>
