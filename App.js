@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   introduction: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 40,
+    marginTop: 60,
+    fontSize: 20,
   }
 });

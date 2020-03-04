@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Button, StyleSheet, TextInput } from 'react-native'
+import { Text, ScrollView, View, Button, StyleSheet, TextInput, Keyboard } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Formik } from 'formik';
 
@@ -24,7 +24,7 @@ export default function ItemsMain() {
               }}
             >
               {(props) => (
-                 <View>
+                 <ScrollView>
                     <TextInput 
                        style={styles.input}
                        placeholder='Item title'
@@ -59,6 +59,7 @@ export default function ItemsMain() {
                        placeholder='Asking price'
                        onChangeText={props.handleChange('askingPrice')}
                        value={props.values.askingPrice}
+                       keyboardType='numeric'
                     />
 
                     <TextInput 
@@ -81,17 +82,19 @@ export default function ItemsMain() {
                        onChangeText={props.handleChange('sellerInfoName')}
                        value={props.values.sellerInfoName}
                     />
-
+                    
                     <TextInput 
                        style={styles.input}
                        placeholder='Seller phone number'
                        onChangeText={props.handleChange('sellerInfoPhone')}
                        value={props.values.sellerInfoPhone}
+                       keyboardType='numeric'
+                       onSubmit={Keyboard.dismiss}
                     />
 
-                    <Button title='Submit' color='#483D8B' onPress={props.handleSubmit} />
+                    <Button title='submit' color='#483D8B' onPress={props.handleSubmit} />
 
-                 </View>   
+                 </ScrollView>   
               )}
             </Formik>
         </View>
