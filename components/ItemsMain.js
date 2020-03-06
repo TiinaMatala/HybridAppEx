@@ -1,11 +1,55 @@
 import React from 'react'
-import { Text, View, Button, StyleSheet, TextInput, Keyboard, Picker } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput, Keyboard, Picker, TouchableOpacity } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Formik } from 'formik';
 import * as ImagePicker from 'expo-image-picker'
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function ItemsMain() {
+
+   const openImagePickerAsync = async () => {
+      let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+  
+      if (permissionResult.granted === false) {
+        alert("Permission to access camera roll is required!");
+        return;
+      }
+  
+      let pickerResult = await ImagePicker.launchImageLibraryAsync();
+      console.log(pickerResult);
+  
+      if(pickerResult.cancelled == true)
+      {
+        alert('Image picker cancelled or failed');
+        return;
+      }
+  
+      const fileNameSplit = pickerResult.uri.split('/');
+      const fileName = fileNameSplit[fileNameSplit.length - 1];
+  
+      let postForm = new FormData();
+      postForm.append('images', {
+        uri: pickerResult.uri,
+        name: fileName,
+        type: 'image/jpeg'
+      });
+      postForm.append('foo', 'bar');
+
+      axios({
+         method: 'post',
+         url: this.props.targetURI,
+         data: postForm,
+         headers: { 'Content-Type': 'multipart/form-data' }
+         })
+         .then(function (response) {
+             //handle success
+             console.log(response);
+         })
+         .catch(function (response) {
+             //handle error
+             console.log(response);
+         });
+     }
 
     return(
        <ScrollView>
@@ -69,6 +113,7 @@ export default function ItemsMain() {
                      <Text>Delivery type shipping</Text>
                      <TextInput
                        style={styles.input}
+                       placeholder='true or false'
                        onChangeText={props.handleChange('deliveryTypeShipping')}
                        value={props.values.deliveryTypeShipping}
                      />
@@ -76,6 +121,7 @@ export default function ItemsMain() {
                      <Text>delivery type pickup</Text>
                      <TextInput
                        style={styles.input}
+                       placeholder='true or false'
                        onChangeText={props.handleChange('deliveryTypePickup')}
                        value={props.values.deliveryTypePickup}
                      />
@@ -95,6 +141,11 @@ export default function ItemsMain() {
                        keyboardType='numeric'
                        onSubmit={Keyboard.dismiss}
                     />
+
+                     <Text>Photos</Text>
+                        <TouchableOpacity onPress={() => openImagePickerAsync()} style={{ borderWidth: 1, borderColor: 'black' }}>
+                           <Text>Pick a photo</Text>
+                        </TouchableOpacity>
 
                     <Button title='submit' color='#483D8B' onPress={props.handleSubmit} />
 
