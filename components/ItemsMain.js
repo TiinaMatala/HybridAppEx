@@ -118,7 +118,7 @@ export default function ItemsMain() {
                        value={props.values.deliveryTypeShipping}
                      />
 
-                     <Text>delivery type pickup</Text>
+                     <Text>Delivery type pickup</Text>
                      <TextInput
                        style={styles.input}
                        placeholder='true or false'
