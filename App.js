@@ -14,8 +14,7 @@ export default function App() {
     category: 'shoes and clothes',
     location: 'Oulu',
     askingPrice: '5',
-    deliveryTypeShipping: false,
-    deliveryTypePickup: true,
+    deliveryType: 'shipping',
     sellerInfoName: 'Nina',
     sellerInfoPhone: '0401234567'}
   ]

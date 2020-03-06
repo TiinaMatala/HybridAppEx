@@ -1,11 +1,14 @@
 import React from 'react'
-import { Text, View, Button, StyleSheet, TextInput, Keyboard } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput, Keyboard, Picker } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Formik } from 'formik';
+import * as ImagePicker from 'expo-image-picker'
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function ItemsMain() {
 
     return(
+       <ScrollView>
         <View style={styles.container}>
             <Formik
               initialValues={{
@@ -14,8 +17,8 @@ export default function ItemsMain() {
                   category: '',
                   location: '',
                   askingPrice: '',
-                  deliveryTypeShipping: false,
-                  deliveryTypePickup: false,
+                  deliveryTypeShipping: '',
+                  deliveryTypePickup: '',
                   sellerInfoName: '',
                   sellerInfoPhone: ''
               }}
@@ -26,67 +29,67 @@ export default function ItemsMain() {
             >
               {(props) => (
                  <View>
+                    <Text>Title</Text>
                     <TextInput 
                        style={styles.input}
-                       placeholder='Item title'
                        onChangeText={props.handleChange('title')}
                        value={props.values.title}
                     />
 
+                    <Text>Description</Text>
                     <TextInput
                        multiline 
                        style={styles.input}
-                       placeholder='Item description'
                        onChangeText={props.handleChange('description')}
                        value={props.values.description}
                     />
 
+                    <Text>Category</Text>
                     <TextInput 
                        style={styles.input}
-                       placeholder='Item category'
                        onChangeText={props.handleChange('category')}
                        value={props.values.category}
                     />
 
+                    <Text>Location</Text>
                     <TextInput 
                        style={styles.input}
-                       placeholder='Item location'
                        onChangeText={props.handleChange('location')}
                        value={props.values.location}
                     />
 
+                    <Text>Asking price</Text>
                     <TextInput 
                        style={styles.input}
-                       placeholder='Asking price'
                        onChangeText={props.handleChange('askingPrice')}
                        value={props.values.askingPrice}
                        keyboardType='numeric'
                     />
 
-                    <TextInput 
+                     <Text>Delivery type shipping</Text>
+                     <TextInput
                        style={styles.input}
-                       placeholder='Deliverytype shipping'
                        onChangeText={props.handleChange('deliveryTypeShipping')}
                        value={props.values.deliveryTypeShipping}
-                    />
+                     />
 
-                    <TextInput 
+                     <Text>delivery type pickup</Text>
+                     <TextInput
                        style={styles.input}
-                       placeholder='Deliverytype pickup'
                        onChangeText={props.handleChange('deliveryTypePickup')}
                        value={props.values.deliveryTypePickup}
-                    />
+                     />
 
+                    <Text>Seller name</Text>
                     <TextInput 
                        style={styles.input}
-                       placeholder='Seller name'
                        onChangeText={props.handleChange('sellerInfoName')}
                        value={props.values.sellerInfoName}
                     />
                     
+                    <Text>Seller phone</Text>
                     <TextInput 
                        style={styles.input}
-                       placeholder='Seller phone number'
                        onChangeText={props.handleChange('sellerInfoPhone')}
                        value={props.values.sellerInfoPhone}
                        keyboardType='numeric'
@@ -99,6 +102,7 @@ export default function ItemsMain() {
               )}
             </Formik>
         </View>
+        </ScrollView>
     )
 }
 
