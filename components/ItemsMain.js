@@ -1,9 +1,12 @@
 import React from 'react'
-import { Text, View, Button, StyleSheet, TextInput, Keyboard, Picker, TouchableOpacity } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput, Keyboard, TouchableOpacity } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { Formik } from 'formik';
+import { Formik } from 'formik'
 import * as ImagePicker from 'expo-image-picker'
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler'
+import axios from 'axios'
+
+const targetURI='http://192.168.1.103:3000/items'
 
 export default function ItemsMain() {
 
@@ -33,11 +36,11 @@ export default function ItemsMain() {
         name: fileName,
         type: 'image/jpeg'
       });
-      postForm.append('foo', 'bar');
+      //postForm.append('foo', 'bar');
 
       axios({
          method: 'post',
-         url: this.props.targetURI,
+         url: targetURI,
          data: postForm,
          headers: { 'Content-Type': 'multipart/form-data' }
          })
@@ -67,8 +70,13 @@ export default function ItemsMain() {
                   sellerInfoPhone: ''
               }}
               onSubmit={(values, actions) => {
+                axios.
+                post(targetURI, {values})
+                .then(function (response) {
+                   console.log(response)
+                })
+                .catch(err => console.log(err));
                 actions.resetForm();
-                console.log(values);
               }}
             >
               {(props) => (

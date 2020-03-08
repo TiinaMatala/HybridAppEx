@@ -8,16 +8,20 @@ import ItemsMain from './components/ItemsMain'
 
 export default function App() {
 
-  const items = [
-    {title: 'Rubber boots',
+  const items = [{
+    title: 'Rubber boots',
     description: 'Yellow, size 36',
     category: 'shoes and clothes',
     location: 'Oulu',
     askingPrice: '5',
-    deliveryType: 'shipping',
+    dateOfPosting: '08-03-2020',
+    deliveryTypeShipping: true,
+    deliveryTypePickup: false,
     sellerInfoName: 'Nina',
-    sellerInfoPhone: '0401234567'}
-  ]
+    sellerInfoPhone: '0401234567',
+    images: 'www.shoes.com'
+  }]
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
