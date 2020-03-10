@@ -12,7 +12,8 @@ export default class ItemsMain extends Component {
    constructor(props) {
       super(props);
       this.state = {
-            imagesaved: null
+            imagesaved: null,
+            fileNameSaved: null
          }
 
    }
@@ -35,6 +36,7 @@ export default class ItemsMain extends Component {
       this.setState({imagesaved: pickerResult.uri}) 
       const fileNameSplit = pickerResult.uri.split('/');
       const fileName = fileNameSplit[fileNameSplit.length - 1];
+      this.setState({fileNameSaved: fileName})
      }
    render() {   
           return(
@@ -56,7 +58,7 @@ export default class ItemsMain extends Component {
                      let postForm = new FormData();
                      postForm.append('images', {
                        uri: this.state.imagesaved,
-                       name: fileName,
+                       name: this.state.fileNameSaved,
                        type: 'image/jpeg'
                      });
                      postForm.append('title', values.title)
