@@ -6,13 +6,11 @@ import {View,Button,TextInput,StyleSheet} from 'react-native'
 
 export default class Register extends React.Component {
 
-  state = {
+   state = {
    username: '', 
    password: '', 
    email: '', 
-   
-
-  }
+   }
 onChangeText = (key, val) => {
    this.setState({ [key]: val })
 
@@ -20,6 +18,10 @@ onChangeText = (key, val) => {
 
   Register = async () => {
     const { password, email } = this.state
+
+  axios
+    .post('http://localhost:4000/users', 
+    { email, password })
     try {
        console.log('user successfully signed up!: ', success)
     } catch (err) {
@@ -28,10 +30,7 @@ onChangeText = (key, val) => {
     }
 
   }
-
- 
-
-  render() {
+render() {
     return (
        <View style={styles.container}>
         <TextInput
@@ -42,8 +41,7 @@ onChangeText = (key, val) => {
            onChangeText={val => this.onChangeText('username', val)}
 
         />
-
-        <TextInput
+       <TextInput
           style={styles.input}
           placeholder='Password'
           secureTextEntry={true}
@@ -52,8 +50,7 @@ onChangeText = (key, val) => {
           onChangeText={val => this.onChangeText('password', val)}
 
         />
-
-       <Button
+        <Button
          title='Sign Up'
          onPress={this.signUp}
         />
