@@ -1,20 +1,16 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import ItemsMain from './components/ItemsMain'
-
-//const Stack = createStackNavigator();
+//import ItemsMain from './components/ItemsMain'
+import TabNavigation from './components/TabNavigation'
 
 export default function App() {
-
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <Text style={ styles.introduction}>Please type in the information of the item on sale</Text>
-        <ItemsMain />
-      </View>
-    </TouchableWithoutFeedback>
+    <SafeAreaProvider style={styles.container}>
+        <TabNavigation />
+    </SafeAreaProvider>
   );
 }
 
@@ -24,11 +20,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  introduction: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 60,
-    fontSize: 20,
   }
 });

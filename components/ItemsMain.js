@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet, TextInput, Keyboard, TouchableOpacity } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput, Keyboard, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Formik } from 'formik'
 import * as ImagePicker from 'expo-image-picker'
@@ -40,6 +40,7 @@ export default class ItemsMain extends Component {
      }
    render() {   
           return(
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
              <ScrollView>
               <View style={styles.container}>
                   <Formik
@@ -87,6 +88,7 @@ export default class ItemsMain extends Component {
                   >
                     {(props) => (
                        <View>
+                          <Text style={ styles.introduction}>Please type in the information of the item on sale</Text>
                           <Text>Title</Text>
                           <TextInput 
                              style={styles.input}
@@ -167,8 +169,8 @@ export default class ItemsMain extends Component {
                     )}
                   </Formik>
               </View>
-              </ScrollView>
-          
+            </ScrollView>
+         </TouchableWithoutFeedback>
       
       )
    }
@@ -187,5 +189,11 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         borderRadius: 6,
+    },
+    introduction: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 60,
+      fontSize: 20,
     }
   });

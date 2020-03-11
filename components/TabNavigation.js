@@ -16,7 +16,7 @@ export default class TabNavigation extends Component {
             <NavigationContainer>
                 <Tab.Navigator>
                     <Tab.Screen
-                        name="Main" 
+                        name="Home" 
                         component={MainView} 
                         options={{ 
                           tabBarIcon: ({ color, size }) => (
@@ -40,7 +40,7 @@ export default class TabNavigation extends Component {
                         }}
                     />
                      <Tab.Screen
-                        name="Add"
+                        name="Add item"
                         component={ItemsMain}
                         options={{
                             tabBarIcon: ({ color, size }) => (
