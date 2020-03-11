@@ -37,11 +37,7 @@ const Login = (props) => {
           
         }
       
-
-
-
-
-        return (
+       return (
 
             <View style={styles.container}> 
             <Text>LOGIN</Text>
