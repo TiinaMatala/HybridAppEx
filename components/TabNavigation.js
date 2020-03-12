@@ -21,24 +21,27 @@ export default class TabNavigation extends Component {
                         options={{ 
                           tabBarIcon: ({ color, size }) => (
                             <Ionicons name="ios-home" color={color} size={size} />)
-                        }}
-                    />
+                        }} 
+                        >
+                    </Tab.Screen>
                     <Tab.Screen 
                         name="Register"
-                        component={Register}
                         options={{
                             tabBarIcon: ({ color, size }) => (
                                 <Ionicons name="ios-person-add" color={color} size={size} />)
                         }}
-                    />
+                    >
+                       { props => <Register {...props} apiURI={ this.props.apiURI}></Register> }
+                    </Tab.Screen>
                     <Tab.Screen
                         name="Login"
-                        component={Login}
                         options={{
                             tabBarIcon: ({ color, size }) => (
                                 <AntDesign name="login" color={color} size={size} />)
                         }}
-                    />
+                    >
+                        { props => <Login {...props} apiURI={ this.props.apiURI}></Login> }
+                    </Tab.Screen>
                      <Tab.Screen
                         name="Add item"
                         component={ItemsMain}

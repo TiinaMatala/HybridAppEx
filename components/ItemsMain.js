@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker'
 import { ScrollView } from 'react-native-gesture-handler'
 import axios from 'axios'
 
-const targetURI='http://10.4.1.62:3000/items'
+const apiURI='http://10.4.4.65:3000/items'
 
 export default class ItemsMain extends Component {
    constructor(props) {
@@ -74,7 +74,7 @@ export default class ItemsMain extends Component {
                
                      axios({
                         method: 'post',
-                        url: targetURI,
+                        url: apiURI,
                         data: postForm,
                         headers: { 'Content-Type': 'multipart/form-data' }
                         })
