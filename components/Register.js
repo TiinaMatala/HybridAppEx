@@ -1,86 +1,85 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {View,
         Text,
         Button,
         TextInput,
-        StyleSheet
+        StyleSheet,
+        TouchableHighlight
 } from 'react-native'
 import axios from 'axios'
 
-const targetURI='http://10.4.4.65:3000/users'
-
-
-export default class Register extends React.Component {
-
-state = {
-    email: '', 
-    password: '', 
-  
-}
-
-onChangeText = (key, val) => {
-    this.setState({ [key]: val })
-
-}
-Register = async () => {
-   const { password, email } = this.state;
-  
-   axios({
-   method:'post', 
-   url:targetURI ,
-   data: { email, password },
-   headers: { 
-      "Content-type": "application/json"}
-   
-   })
  
-try {
-  console.log('user successfully signed up!: ', success)
-} catch (err) {
-   console.log('error signing up: ', err)
+const Register = (props) => {
 
-}
+   const [password, setPassword] = useState("");
+   const [email, setEmail] = useState("");
 
-}
 
-render() {
+   
+function register()
+{
+  fetch(props.apiURI + '/register', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        password: password
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => {
+      if (response.ok == false) {
+        throw new Error("HTTP Code " + response.status + " - " + JSON.stringify(response.json()));
+      }
+      return response.json();
+    })
+    
+    .catch(error => {
+      console.log("Error message:")
+      console.log(error.message)
+    });
+
+   }
 
    return (
 
       <View style={styles.container}> 
-      <Text>REGISTER</Text>
+      <Text style={styles.text}>REGISTER</Text>
        <Text>Please enter your email</Text>
           <TextInput style={styles.input}
              placeholder='Email'
              autoCapitalize="none"
              placeholderTextColor='white'
-             onChangeText={val => this.onChangeText('email', val)}
+             onChangeText={ value => setEmail(value)}
 
           />
-          <Text>Please enter your password</Text>
+          <Text style={styles.text}>Please enter your password</Text>
           <TextInput style={styles.input}
              placeholder='Password'
              secureTextEntry={true}
              autoCapitalize="none"
              placeholderTextColor='white'
-             onChangeText={val => this.onChangeText('password', val)}
+             onChangeText={ value => setPassword(value)}
 
            />
 
-
-           <Button
-            title='Sign Up'
-            onPress={this.Register}
-
-            />
+<TouchableHighlight onPress={ () => register() }>
+        <View style={ styles.primaryButton }>
+          <Text style={ styles.primaryButtonText }>Sign up</Text>
+        </View>
+      </TouchableHighlight>
 
 </View>
 
 )}
-
-
-} 
+   
+   
 const styles = StyleSheet.create({
+
+   text: {
+      margin: 30
+   },
 
    container: {
        flex: 1,
@@ -102,3 +101,5 @@ const styles = StyleSheet.create({
 
  });
 
+
+ export default Register ;

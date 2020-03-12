@@ -10,8 +10,8 @@ const targetURI='http://10.4.4.87:3000/users'
 export default function App() {
   return (
     <View style={styles.container}>
-    <Register/>
-      <Login/>
+    <Register  apiURI='http://10.4.4.65:3000/users'></Register>
+    
     </View>
   );
 }

@@ -14,11 +14,8 @@ const targetURI='http://10.4.4.65:3000/users'
 
 const Login = (props) => {
     
-
-
-      
-        function loginClick() {
-        axios (props.apiURI + '/loginForJWT', {
+  function loginClick() {
+        fetch (props.apiURI + '/login', {
             method: 'GET',
             headers: {
               "Authorization": "Basic " + Base64.encode(email + ":" + password)
@@ -35,7 +32,6 @@ const Login = (props) => {
             console.log("Received following JSON");
             console.log(json);
       
-            props.onLoginReceiveJWT(json.token);
           })
           
         }
