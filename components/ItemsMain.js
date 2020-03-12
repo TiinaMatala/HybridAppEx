@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker'
 import { ScrollView } from 'react-native-gesture-handler'
 import axios from 'axios'
 
-const targetURI='http://192.168.1.103:3000/items'
+const targetURI='http://10.4.1.62:3000/items'
 
 export default class ItemsMain extends Component {
    constructor(props) {
