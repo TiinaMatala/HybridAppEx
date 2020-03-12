@@ -4,13 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import Register from './components/Register'
 import Login from './components/Login'
 
-//const Stack = createStackNavigator();
-const targetURI='http://10.4.4.87:3000/users'
-
 export default function App() {
   return (
     <View style={styles.container}>
     <Register  apiURI='http://10.4.4.65:3000/users'></Register>
+    <Login apiURI='http://10.4.4.65:3000/users'></Login>
     
     </View>
   );

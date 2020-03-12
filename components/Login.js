@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {View,
         Text,
         Button,
@@ -7,12 +7,16 @@ import {View,
         TouchableHighlight
 } from 'react-native'
 import axios from 'axios'
+import { Base64 } from 'js-base64'
 
-const targetURI='http://10.4.4.65:3000/users'
+const apiURI='http://10.4.4.65:3000/users'
 
 
 
 const Login = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
     
   function loginClick() {
         fetch (props.apiURI + '/login', {
@@ -45,7 +49,7 @@ const Login = (props) => {
                    placeholder='Email'
                    autoCapitalize="none"
                    placeholderTextColor='white'
-                   onChangeText={val => this.onChangeText('email', val)}
+                   onChangeText={ value => setEmail(value)}
       
                 />
                 <Text>Please enter your password</Text>
@@ -54,7 +58,7 @@ const Login = (props) => {
                    secureTextEntry={true}
                    autoCapitalize="none"
                    placeholderTextColor='white'
-                   onChangeText={val => this.onChangeText('password', val)}
+                   onChangeText={ value => setPassword(value)}
       
                  />
       
