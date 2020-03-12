@@ -1,14 +1,16 @@
+import 'react-native-gesture-handler';
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
-//const Stack = createStackNavigator();
+//import ItemsMain from './components/ItemsMain'
+import TabNavigation from './components/TabNavigation'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Testing</Text>
-    </View>
+    <SafeAreaProvider style={styles.container}>
+        <TabNavigation />
+    </SafeAreaProvider>
   );
 }
 
@@ -18,5 +20,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
