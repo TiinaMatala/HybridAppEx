@@ -31,12 +31,17 @@ const Login = (props) => {
             }
             return response.json();
           })
+          
           .then(json => {
             console.log("Login successful")
             console.log("Received following JSON");
             console.log(json);
       
           })
+          .catch(error => {
+            console.log("Error message:")
+            console.log(error.message)
+          });
           
         }
       
@@ -44,7 +49,7 @@ const Login = (props) => {
 
             <View style={styles.container}> 
             <Text>LOGIN</Text>
-             <Text>Please enter your email</Text>
+             <Text style={styles.text}>Please enter your email</Text>
                 <TextInput style={styles.input}
                    placeholder='Email'
                    autoCapitalize="none"
@@ -52,7 +57,7 @@ const Login = (props) => {
                    onChangeText={ value => setEmail(value)}
       
                 />
-                <Text>Please enter your password</Text>
+                <Text style={styles.text}>Please enter your password</Text>
                 <TextInput style={styles.input}
                    placeholder='Password'
                    secureTextEntry={true}
@@ -75,7 +80,7 @@ const Login = (props) => {
       
          container: {
              flex: 1,
-             backgroundColor: 'grey', 
+             backgroundColor: 'white', 
              alignItems: 'center',
              justifyContent: 'center',
       
@@ -89,6 +94,10 @@ const Login = (props) => {
             fontSize: 18,
             borderRadius: 6,
       
+        },
+        text: {
+          margin: 30 ,
+
         },
       
        });
