@@ -5,6 +5,9 @@ import {View,
         TextInput,
         StyleSheet
 } from 'react-native'
+import axios from 'axios'
+
+const targetURI='http://10.4.4.65:3000/users'
 
 
 export default class Register extends React.Component {

@@ -6,6 +6,9 @@ import {View,
         StyleSheet,
         TouchableHighlight
 } from 'react-native'
+import axios from 'axios'
+
+const targetURI='http://10.4.4.65:3000/users'
 
 
 
